@@ -70,9 +70,16 @@ const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   // Your code here!
-  for (key in haystack) {
-    if (haystack[key].toLowerCase().includes(searchTerm.toLowerCase())) {
-      return true
+  var obj_vals = Object.values(haystack)
+  console.log(obj_vals)
+  for (var i = 0; i < obj_vals.length; i++)
+  {
+    if (typeof obj_vals[i] === 'string' || obj_vals[i] instanceof String)
+    {
+      if (obj_vals[i].indexOf(searchTerm) > -1)
+      {
+        return true
+      }
     }
   }
   return false

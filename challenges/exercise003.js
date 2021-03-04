@@ -18,7 +18,7 @@ function camelCaseWords(words) {
     return words
   }
   for (var i = 1; i < words.length; i++) {
-    words[i] = words[i].substring(0, 1).toUpperCase + words[i].substring(1)
+    words[i] = words[i][0].toUpperCase() + words[i].substring(1)
   }
 
   return words.join("")
