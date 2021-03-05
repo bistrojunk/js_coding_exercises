@@ -69,9 +69,8 @@ const arrShift = arr => {
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Your code here!
+
   var obj_vals = Object.values(haystack)
-  console.log(obj_vals)
   for (var i = 0; i < obj_vals.length; i++)
   {
     if (typeof obj_vals[i] === 'string' || obj_vals[i] instanceof String)

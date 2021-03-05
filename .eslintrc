@@ -4,5 +4,13 @@
     "es6": true,
     "jest": true,
     "node": true
-  }
+  },
+  "rules": {
+    // My preferred rules
+    "no-console": "warn",
+    "no-var": "error", // preference for let and const only
+    "prefer-const": "error",
+    "eqeqeq": "warn" // warn to use === instead of ==
+  },
+  "eslint.validate": [ "javascript", "javascriptreact", "html", "typescriptreact" ]
 }

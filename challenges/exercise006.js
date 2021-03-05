@@ -4,8 +4,19 @@
  * @param {Array} arr
  * @returns {Number}
  */
-const sumMultiples = arr => {
+const sumMultiples = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
+    // loop through the array
+  // if the number is / 3 or /5 (%), add to total
+  // return total
+  let total = 0;
+  arr.forEach(n => {
+    if (n % 5 ===0 || n % 3 === 0) {
+      total += n
+    }
+  })
+  return total;
+
 };
 
 /**
@@ -13,8 +24,20 @@ const sumMultiples = arr => {
  * @param {String} str
  * @returns {Boolean}
  */
-const isValidDNA = str => {
+const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+
+  let in_arr = str.split('')
+  let valid = 'CGTA';
+
+  for (let i = 0; i < in_arr.length; i++) {
+    if(!valid.match(in_arr[i])) {
+      return false;
+    }
+  }
+
+  return true;
+  
 };
 
 /**
@@ -22,8 +45,29 @@ const isValidDNA = str => {
  * @param {String} str
  * @returns {String}
  */
-const getComplementaryDNA = str => {
+const getComplementaryDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+
+  let in_arr = str.split('');
+  let out_arr = in_arr;
+
+  for (let i = 0; i < in_arr.length; i++) {
+    if(in_arr[i] == 'G') {
+      out_arr[i] = 'C';
+    }
+    else if(in_arr[i] == 'C') {
+      out_arr[i] = 'G';
+    }
+    else if(in_arr[i] == 'T') {
+      out_arr[i] = 'A';
+    }
+    else if(in_arr[i] == 'A') {
+      out_arr[i] = 'T';
+    }
+  }
+
+  return out_arr.join("");
+
 };
 
 /**
@@ -31,8 +75,17 @@ const getComplementaryDNA = str => {
  * @param {Number} n
  * @returns {Boolean}
  */
-const isItPrime = n => {
+const isItPrime = (n) => {
   if (n === undefined) throw new Error("n is required");
+
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+
 };
 
 /**
@@ -49,6 +102,11 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+
+  return new Array(n).fill(fill).map(() => new Array(n).fill(fill));
+
+  // ALTERNATIVE WAY IF YOU DON'T WANT TO USE THE "MAGIC" map function
+  //return Array(n).fill(Array(n).fill(fill))
 };
 
 /**
@@ -68,16 +126,13 @@ const areWeCovered = (staff, day) => {
   if (day === undefined) throw new Error("day is required");
 
   let count = 0;
-  for (let i = 0; i < staff.length; i++)
-  {
-    if(staff[i]["rota"].includes(day))
-    {
+  for (let i = 0; i < staff.length; i++) {
+    if (staff[i]["rota"].includes(day)) {
       count += 1;
     }
   }
 
-  if (count >= 3)
-  {
+  if (count >= 3) {
     return true;
   }
   return false;
@@ -89,5 +144,5 @@ module.exports = {
   getComplementaryDNA,
   isItPrime,
   createMatrix,
-  areWeCovered
+  areWeCovered,
 };

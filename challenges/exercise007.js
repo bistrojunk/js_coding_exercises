@@ -4,6 +4,18 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+
+
+  //  GOOGLE SEARCH https://stackoverflow.com/questions/38334652/sum-all-the-digits-of-a-number-javascript
+  // ANSWER WITH "33" BETWEEN THE ARROWS
+  let sum = 0;
+
+  while (n) {
+    sum += n % 10;
+    n = Math.floor(n / 10);
+  }
+
+  return sum;
 };
 
 /**
@@ -17,6 +29,24 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+
+
+  //  REMOVE ME
+  // ADAPTED FROM LINES 26 & 27 at https://www.codegrepper.com/code-examples/javascript/javascript+create+range+of+numbers
+
+  if (step === undefined) {
+    step = 1;
+  }
+
+  let map = (value) => value
+  let index = start;
+  let result = [];
+
+	for (index; step > 0 ? index <= end : index >= end; index += step) {
+		result.push(map(index));
+  }
+  
+  return result;
 };
 
 /**
@@ -51,6 +81,33 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+
+
+//THIS ONE IS REDICULOUS!!!  THERE MUST BE AN EASIER WAY, BUT I"M NO JS EXPERT :(
+
+  
+  
+  let usr_list = [];
+  let total = 0;
+  for (let i = 0; i < users.length; i++) {
+    let screen_time = users[i]['screenTime'];
+    console.log(screen_time)
+    for (let j = 0; j < screen_time.length; j++) {
+      if (screen_time[j]['date'] == date) {
+        let arr_of_times = Object.values(screen_time[j]['usage']);
+        for (let k = 0; k < arr_of_times.length; k++) {
+          total += arr_of_times[k];
+        }
+        if (total > 100) {
+          usr_list.push(users[i]['username']);
+        }
+      }
+    }
+
+    return usr_list;
+  }
+
 };
 
 /**
@@ -65,7 +122,12 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
-};
+
+  let red = parseInt(hexStr.substring(1, 3), 16);
+  let green = parseInt(hexStr.substring(3, 5), 16);
+  let blue = parseInt(hexStr.substring(5, 7), 16);
+  
+  console.log("rgb(" + red + ", " + green + ", ", blue + ")")};
 
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
