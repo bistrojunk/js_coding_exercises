@@ -2,6 +2,8 @@
 
 This repository contains challenges for you to undertake and build on your coding and technical ability. We will be checking over your solutions, so please ensure you push to GitHub regularly. 
 
+![rove](docs/ pia24543-1-16.jpg)
+
 You may find these exercises challenging but they give you the opportunity to showcase your growth mindset and commitment to programming and learning in general. You can always come to us if you are having any trouble! 
 
 We will be covering Javascript on the Your Return to Tech course, so it's really important your problem solving skills are fresh. 
